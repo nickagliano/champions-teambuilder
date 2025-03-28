@@ -1,18 +1,22 @@
-<script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-    <HelloWorld msg="Vite + Vue" />
+  <div
+    class="max-w-screen-3xl mx-auto grid grid-flow-col grid-cols-auto-1 min-h-screen"
+  >
+    <navigation />
+    <router-view></router-view>
   </div>
 </template>
+
+<script>
+import Navigation from "./components/Navigation.vue";
+
+export default {
+  name: "App",
+  components: {
+    Navigation,
+  },
+};
+</script>
 
 <style scoped>
 .logo {

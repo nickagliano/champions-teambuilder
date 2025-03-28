@@ -1,10 +1,16 @@
 import { createApp } from "vue";
-import "./style.css";
 import App from "./App.vue";
-// import { BootstrapVue } from "bootstrap-vue-next";
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue-next/dist/bootstrap-vue-next.css";
+import { createPinia } from "pinia";
+import "./style.css";
+import router from "./router"; // Import the router
 
 const app = createApp(App);
-// app.use(BootstrapVue);
+
+// Use the router in the app
+app.use(router);
+
+// Set up Pinia
+const pinia = createPinia();
+app.use(pinia);
+
 app.mount("#app");

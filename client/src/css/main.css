@@ -1,1 +1,17 @@
 @import "tailwindcss";
+
+/* Used for controlling the layout of individual pages */
+.tb-grid {
+  @apply grid gap-x-6;
+
+  grid-template-columns:
+    [full-start]
+    0
+    [content-start start-half-start]
+    minmax(0, 6fr)
+    [start-half-end end-half-start]
+    minmax(0, 4fr)
+    [end-half-end content-end]
+    0
+    [full-end];
+}

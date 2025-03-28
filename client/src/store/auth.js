@@ -1,31 +1,56 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
+import { BASE_URL } from "../common/apiService";
+
 export const useAuthStore = defineStore("auth", {
   state: () => ({
-    user: null,
+    user: JSON.parse(localStorage.getItem("user")) || null,
     token: localStorage.getItem("token") || "",
   }),
+
   actions: {
     async login(email, password) {
       try {
         const res = await axios.post(
-          "http://localhost:3000/api/v1/users/sign_in",
+          `${BASE_URL}/api/v1/auth/login`,
           {
-            user: { email, password },
+            email,
+            password,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
         );
-        this.token = res.headers.authorization;
-        this.user = res.data;
-        localStorage.setItem("token", this.token);
+
+        const { token, user } = res.data;
+
+        // Save the token in localStorage
+        localStorage.setItem("token", token);
+
+        // Optionally, save the user data in localStorage as well
+        localStorage.setItem("user", JSON.stringify(user));
+
+        // Store user data and token in Pinia store
+        this.token = token;
+        this.user = user;
+
+        console.log("User logged in successfully:", user);
       } catch (error) {
         console.error("Login error:", error);
+        this.error = "Invalid credentials. Please try again.";
       }
     },
+
     logout() {
       this.token = "";
       this.user = null;
+
+      // Remove token and user from localStorage
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
     },
   },
 });

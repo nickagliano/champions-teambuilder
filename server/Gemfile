@@ -14,9 +14,9 @@ gem "bootsnap", require: false
 gem "rack-cors"
 gem "sidekiq"
 gem "devise", "~> 4.9"
-gem "devise-jwt", "~> 0.12.1"
 gem "blueprinter", "~> 1.1"
 gem 'pry-rails'
+gem "jwt"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]

@@ -47,14 +47,24 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.users (
     id bigint NOT NULL,
-    email character varying DEFAULT ''::character varying NOT NULL,
+    provider character varying DEFAULT 'email'::character varying NOT NULL,
+    uid character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying,
     reset_password_sent_at timestamp(6) without time zone,
+    allow_password_change boolean DEFAULT false,
     remember_created_at timestamp(6) without time zone,
+    confirmation_token character varying,
+    confirmed_at timestamp(6) without time zone,
+    confirmation_sent_at timestamp(6) without time zone,
+    unconfirmed_email character varying,
+    name character varying,
+    nickname character varying,
+    image character varying,
+    email character varying,
+    tokens json,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    jti character varying
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -109,17 +119,17 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_users_on_confirmation_token ON public.users USING btree (confirmation_token);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
-
-
---
--- Name: index_users_on_jti; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_users_on_jti ON public.users USING btree (jti);
 
 
 --
@@ -130,12 +140,21 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING bt
 
 
 --
+-- Name: index_users_on_uid_and_provider; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_users_on_uid_and_provider ON public.users USING btree (uid, provider);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20250328190812'),
+('20250328184740'),
 ('20250328135228'),
 ('20250328135226');
 
