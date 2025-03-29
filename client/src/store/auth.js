@@ -36,8 +36,6 @@ export const useAuthStore = defineStore("auth", {
         // Store user data and token in Pinia store
         this.token = token;
         this.user = user;
-
-        console.log("User logged in successfully:", user);
       } catch (error) {
         console.error("Login error:", error);
         this.error = "Invalid credentials. Please try again.";

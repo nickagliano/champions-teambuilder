@@ -53,7 +53,6 @@ export default {
           loginError.value = "Invalid email or password"; // If no token, it's a failed login
         }
       } catch (error) {
-        console.error("Sign-in error:", error);
         loginError.value =
           "An error occurred while logging in. Please try again.";
       }
