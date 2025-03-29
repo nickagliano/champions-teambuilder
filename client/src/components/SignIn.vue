@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSignIn" class="flex flex-col gap-4 w-88 mt-4">
-    <h2 class="text-xl p-2">Sign In</h2>
+    <h2 class="text-xl">Sign In</h2>
     <input
       v-model="email"
       type="email"
