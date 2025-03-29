@@ -46,6 +46,15 @@ h1 {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.nav {
+  transition: border-color 0.25s;
+  border: 1px solid transparent;
+}
+
+.nav:hover {
+  border-color: #646cff;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

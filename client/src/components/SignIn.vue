@@ -6,7 +6,7 @@
       type="email"
       placeholder="Email"
       required
-      class="p-2 bg-gray-800"
+      class="tb-input p-2 bg-gray-800"
     />
     <input
       v-model="password"

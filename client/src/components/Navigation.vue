@@ -6,7 +6,7 @@
         <li v-if="authStore.token">
           <router-link
             to="/dashboard"
-            class="a text-white flex items-center hover:bg-gray-700 p-2 text-xs rounded"
+            class="nav text-white flex items-center hover:bg-gray-800 p-2 text-xs rounded"
           >
             <i class="fas fa-tachometer-alt mr-2"></i> Dash
           </router-link>
@@ -14,7 +14,7 @@
         <li v-if="!authStore.token">
           <router-link
             to="/sign-in"
-            class="a text-white flex items-center hover:bg-gray-700 p-2 text-xs rounded"
+            class="nav text-white flex items-center hover:bg-gray-700 p-2 text-xs rounded"
           >
             <i class="fas fa-sign-in-alt mr-2"></i> Sign In
           </router-link>
@@ -22,7 +22,7 @@
         <li v-if="!authStore.token">
           <router-link
             to="/sign-up"
-            class="a text-white flex items-center hover:bg-gray-700 p-2 text-xs rounded"
+            class="nav text-white flex items-center hover:bg-gray-700 p-2 text-xs rounded"
           >
             <i class="fas fa-user-plus mr-2"></i> Sign Up
           </router-link>
@@ -30,7 +30,7 @@
         <li v-if="authStore.token">
           <button
             @click="handleLogout"
-            class="a text-white flex items-center hover:bg-gray-700 p-2 rounded text-xs cursor-pointer"
+            class="nav text-white flex items-center hover:bg-gray-700 p-2 rounded text-xs cursor-pointer"
           >
             <i class="fas fa-sign-out-alt mr-2"></i>Logout
           </button>

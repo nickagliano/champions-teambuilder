@@ -54,6 +54,7 @@
 <script>
 import { ref } from "vue";
 import { useAuthStore } from "../store/auth";
+import { useRouter } from "vue-router";
 import api from "../common/apiService";
 
 export default {
@@ -65,18 +66,17 @@ export default {
     const error = ref("");
 
     const authStore = useAuthStore();
+    const router = useRouter();
 
     const handleSubmit = async () => {
       error.value = "";
       try {
-        console.log("Making the requetst!");
-        console.log(email.value);
-        console.log(password.value);
         // Make a POST request to create the user
         const response = await api.post("/api/v1/users", {
           registration: {
             user: {
               email: email.value,
+              uid: email.value,
               password: password.value,
               password_confirmation: password_confirmation.value,
             },
@@ -86,9 +86,8 @@ export default {
           },
         });
 
-        // If successful, you can handle the response (e.g., login the user or redirect to another page)
-        console.log("User created successfully:", response.data);
-        authStore.login(email.value, password.value); // Log in the user after successful signup
+        await authStore.login(email.value, password.value); // Log in the user after successful signup
+        router.push("/dashboard");
       } catch (err) {
         console.error("Signup error:", err);
         error.value =

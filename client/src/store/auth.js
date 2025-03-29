@@ -43,7 +43,6 @@ export const useAuthStore = defineStore("auth", {
         this.error = "Invalid credentials. Please try again.";
       }
     },
-
     logout() {
       this.token = "";
       this.user = null;
