@@ -5,4 +5,4 @@
   - [ ] Am I really not supposed to use @apply?
     - [ ] https://twitter.com/adamwathan/status/1226511611592085504
     - [ ] https://twitter.com/adamwathan/status/1559250403547652097
-- [ ] 
+- [ ] Allow 422 errors to pass through Axios
