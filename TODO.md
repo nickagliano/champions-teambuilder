@@ -2,3 +2,7 @@
   - [ ] Email already taken, passwords don't match, not good enough pass, etc.
 - [ ] Setup email confirmations, reset password emails
 - [ ] Fix scoped css vs style.css, and why can't I use @apply directives?
+  - [ ] Am I really not supposed to use @apply?
+    - [ ] https://twitter.com/adamwathan/status/1226511611592085504
+    - [ ] https://twitter.com/adamwathan/status/1559250403547652097
+- [ ] 
